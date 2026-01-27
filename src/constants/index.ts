@@ -1,3 +1,5 @@
+import type { Brand } from "./_index";
+
 const news = [
   {
     title: "QFA Expands to Abuja with Multiple Store Openings",
@@ -19,38 +21,54 @@ const news = [
   },
 ];
 
-const brands = [
+const brands: Brand[] = [
   {
-    name: "Krispy Kreme",
-    logo: "🍩",
-    tagline: "Original Glazed & More",
-    color: "from-green-600 to-green-700",
-    hoverColor: "group-hover:from-green-500 group-hover:to-green-600",
-    link: "https://krispykreme.ng/",
-  },
-  {
-    name: "Dodo Pizza",
-    logo: "🍕",
+    id: "dodo",
+    name: "DODO PIZZA",
     tagline: "Digital Pizza Experience",
-    color: "from-orange-500 to-red-600",
-    hoverColor: "group-hover:from-orange-400 group-hover:to-red-500",
-    link: "https://dodopizza.ng/",
+    description:
+      "Our world-famous pizza brand where you can order fast, fresh pizza with real-time preparation tracking. A modern approach to pizza making with premium ingredients and cutting-edge technology.",
+    color: "#FF6B35",
+    linear: "from-orange-500 to-red-500",
+    textColor: "text-orange-600",
+    icon: "🍕",
+    link: "https://dodopizza.ng",
   },
   {
+    id: "krispy",
+    name: "Krispy Kreme",
+    tagline: "Original Glazed & More",
+    description:
+      "The world's favourite doughnut brand bringing you fresh, delicious Original Glazed doughnuts and a wide variety of flavors. Experience the joy that is Krispy Kreme.",
+    color: "#006341",
+    linear: "from-green-600 to-emerald-700",
+    textColor: "text-green-700",
+    icon: "🍩",
+    link: "https://krispykreme.ng",
+  },
+  {
+    id: "scoop",
     name: "Scoop'd",
-    logo: "🍦",
-    tagline: "Premium Ice Cream",
-    color: "from-pink-500 to-purple-600",
-    hoverColor: "group-hover:from-pink-400 group-hover:to-purple-500",
-    link: "https://scoopd.ng/",
+    tagline: "Scoops of Happiness",
+    description:
+      "Your favourite artisan ice cream bar bringing premium ice cream and desserts to cool off and enjoy life's sweet moments. Made with the finest ingredients for pure indulgence.",
+    color: "#00A9A5",
+    linear: "from-teal-500 to-cyan-600",
+    textColor: "text-teal-600",
+    icon: "🍦",
+    link: "https://scoopd.ng",
   },
   {
+    id: "burger",
     name: "Burger Nation",
-    logo: "🍔",
-    tagline: "Gourmet Burgers",
-    color: "from-yellow-500 to-orange-600",
-    hoverColor: "group-hover:from-yellow-400 group-hover:to-orange-500",
-    link: "https://burgernation.ng/",
+    tagline: "Gourmet Burgers Since 2005",
+    description:
+      "Premium gourmet burgers crafted with quality ingredients and bold flavors. A homegrown favorite serving up the nation's best burgers with a side of excellence.",
+    color: "#FF9F1C",
+    linear: "from-amber-500 to-orange-600",
+    textColor: "text-amber-600",
+    icon: "🍔",
+    link: "https://burgernation.ng",
   },
 ];
 

@@ -1,68 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import { ChevronDown, ExternalLink, Sparkles } from "lucide-react";
-
-interface Brand {
-  id: string;
-  name: string;
-  tagline: string;
-  description: string;
-  color: string;
-  gradient: string;
-  textColor: string;
-  icon: string;
-  link: string;
-}
-
-const brands: Brand[] = [
-  {
-    id: "dodo",
-    name: "DODO PIZZA",
-    tagline: "Digital Pizza Experience",
-    description:
-      "Our world-famous pizza brand where you can order fast, fresh pizza with real-time preparation tracking. A modern approach to pizza making with premium ingredients and cutting-edge technology.",
-    color: "#FF6B35",
-    gradient: "from-orange-500 to-red-500",
-    textColor: "text-orange-600",
-    icon: "🍕",
-    link: "https://dodopizza.ng",
-  },
-  {
-    id: "krispy",
-    name: "Krispy Kreme",
-    tagline: "Original Glazed & More",
-    description:
-      "The world's favourite doughnut brand bringing you fresh, delicious Original Glazed doughnuts and a wide variety of flavors. Experience the joy that is Krispy Kreme.",
-    color: "#006341",
-    gradient: "from-green-600 to-emerald-700",
-    textColor: "text-green-700",
-    icon: "🍩",
-    link: "https://krispykreme.ng",
-  },
-  {
-    id: "scoop",
-    name: "Scoop'd",
-    tagline: "Scoops of Happiness",
-    description:
-      "Your favourite artisan ice cream bar bringing premium ice cream and desserts to cool off and enjoy life's sweet moments. Made with the finest ingredients for pure indulgence.",
-    color: "#00A9A5",
-    gradient: "from-teal-500 to-cyan-600",
-    textColor: "text-teal-600",
-    icon: "🍦",
-    link: "https://scoopd.ng",
-  },
-  {
-    id: "burger",
-    name: "Burger Nation",
-    tagline: "Gourmet Burgers Since 2005",
-    description:
-      "Premium gourmet burgers crafted with quality ingredients and bold flavors. A homegrown favorite serving up the nation's best burgers with a side of excellence.",
-    color: "#FF9F1C",
-    gradient: "from-amber-500 to-orange-600",
-    textColor: "text-amber-600",
-    icon: "🍔",
-    link: "https://burgernation.ng",
-  },
-];
+import { ExternalLink } from "lucide-react";
+import HeroContent from "../components/HeroContent";
+import { brands } from "../constants";
+import { Link } from "react-router-dom";
+import { useDocumentTitle } from "../components/UseDocument";
 
 interface AnimatedSectionProps {
   children: React.ReactNode;
@@ -106,74 +47,22 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
 };
 
 const BrandsPage: React.FC = () => {
-  const [scrollY, setScrollY] = useState(0);
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
   const [hoveredBrand, setHoveredBrand] = useState<string | null>(null);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollToContent = () => {
-    window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
-  };
+  useDocumentTitle("Brands");
 
   return (
     <div className="min-h-screen bg-linear-to-br from-slate-50 via-white to-blue-50">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-        {/* Animated Background */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div
-            className="absolute top-20 left-10 w-96 h-96 bg-orange-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"
-            style={{ transform: `translateY(${scrollY * 0.3}px)` }}
-          />
-          <div
-            className="absolute top-40 right-10 w-96 h-96 bg-green-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"
-            style={{ transform: `translateY(${scrollY * 0.2}px)` }}
-          />
-          <div
-            className="absolute -bottom-8 left-1/2 w-96 h-96 bg-teal-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"
-            style={{ transform: `translateY(${scrollY * 0.4}px)` }}
-          />
-        </div>
-
-        {/* Hero Content */}
-        <div className="relative z-10 text-center px-6 max-w-5xl">
-          <div className="mb-6 inline-block">
-            <Sparkles className="w-12 h-12 text-blue-600 animate-pulse" />
-          </div>
-
-          <h1 className="text-6xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-900 via-purple-700 to-pink-600 animate-gradient">
-            Our Brands
-          </h1>
-
-          <p className="text-xl md:text-2xl text-gray-700 font-light mb-4">
-            QFA is a multi-brand dining and delivery company, operating a
-            portfolio of
-          </p>
-          <p className="text-xl md:text-2xl text-gray-700 font-light mb-12">
-            delicious food brands, including international icons and our own
-            home-grown favourites.
-          </p>
-
-          {/* Scroll Indicator */}
-          <button
-            onClick={scrollToContent}
-            className="group relative inline-flex items-center justify-center w-20 h-20 rounded-full border-2 border-blue-600 hover:bg-blue-600 transition-all duration-300 cursor-pointer animate-bounce"
-          >
-            <span className="absolute text-xs text-blue-600 group-hover:text-white font-semibold tracking-wider transform -rotate-90 -left-24">
-              SCROLL DOWN
-            </span>
-            <ChevronDown className="w-8 h-8 text-blue-600 group-hover:text-white transition-colors" />
-          </button>
-        </div>
-      </section>
+      <HeroContent
+        header="  Our Brands "
+        content=" QFA is a multi-brand dining and delivery company, operating a
+          portfolio of delicious food brands, including international icons and
+          our own home-grown favourites."
+      />
 
       {/* Brands Grid Section */}
-      <section className="py-20 px-6">
+      <section className="py-1.5 px-6">
         <div className="max-w-7xl mx-auto">
           <AnimatedSection>
             <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-gray-900">
@@ -205,9 +94,9 @@ const BrandsPage: React.FC = () => {
                         : "shadow-lg"
                     }`}
                   >
-                    {/* Background with gradient */}
+                    {/* Background with linear */}
                     <div
-                      className={`absolute inset-0 bg-gradient-to-br ${brand.gradient} opacity-90`}
+                      className={`absolute inset-0 bg-linear-to-br ${brand.linear} opacity-90`}
                     />
 
                     {/* Dark overlay on hover */}
@@ -243,10 +132,15 @@ const BrandsPage: React.FC = () => {
                             hoveredBrand === brand.id ? "translate-x-2" : ""
                           }`}
                         >
-                          <span className="text-sm font-semibold">
-                            Visit Website
-                          </span>
-                          <ExternalLink className="w-4 h-4" />
+                          <Link
+                            to={brand.link}
+                            className="flex items-center gap-2.5"
+                          >
+                            <span className="text-sm font-semibold">
+                              Visit Website
+                            </span>
+                            <ExternalLink className="w-4 h-4" />
+                          </Link>
                         </div>
                       </div>
 
@@ -262,7 +156,7 @@ const BrandsPage: React.FC = () => {
       </section>
 
       {/* Detailed Brand Sections */}
-      <section className="py-20 px-6 bg-gradient-to-b from-transparent to-slate-50">
+      <section className="py-20 px-6 bg-linear-to-b from-transparent to-slate-50">
         <div className="max-w-7xl mx-auto space-y-20">
           {brands.map((brand, index) => (
             <AnimatedSection key={`detail-${brand.id}`} delay={100}>
@@ -271,7 +165,7 @@ const BrandsPage: React.FC = () => {
               >
                 {/* Brand Logo/Icon Side */}
                 <div
-                  className={`lg:w-1/2 p-12 rounded-3xl bg-gradient-to-br ${brand.gradient} flex items-center justify-center`}
+                  className={`lg:w-1/2 p-12 rounded-3xl bg-linear-to-br ${brand.linear} flex items-center justify-center`}
                 >
                   <div className="text-center">
                     <div className="text-9xl mb-6 animate-bounce-slow">
@@ -287,7 +181,7 @@ const BrandsPage: React.FC = () => {
                 {/* Description Side */}
                 <div className="lg:w-1/2 p-8">
                   <div
-                    className={`inline-block px-4 py-2 rounded-full bg-gradient-to-r ${brand.gradient} text-white text-sm font-semibold mb-6`}
+                    className={`inline-block px-4 py-2 rounded-full bg-linear-to-r ${brand.linear} text-white text-sm font-semibold mb-6`}
                   >
                     Featured Brand
                   </div>
@@ -297,15 +191,15 @@ const BrandsPage: React.FC = () => {
                   <p className="text-lg text-gray-700 leading-relaxed mb-8">
                     {brand.description}
                   </p>
-                  <a
-                    href={brand.link}
+                  <Link
+                    to={brand.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r ${brand.gradient} text-white font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105`}
+                    className={`inline-flex items-center gap-3 px-8 py-4 rounded-full bg-linear-to-r ${brand.linear} text-white font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105`}
                   >
                     <span>Explore {brand.name}</span>
                     <ExternalLink className="w-5 h-5" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </AnimatedSection>
@@ -318,9 +212,9 @@ const BrandsPage: React.FC = () => {
         <section className="py-20 px-6">
           <div className="max-w-4xl mx-auto text-center">
             <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-orange-500 via-purple-600 to-teal-500 rounded-3xl blur opacity-30 group-hover:opacity-40 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-linear-to-r from-orange-500 via-purple-600 to-teal-500 rounded-3xl blur opacity-30 group-hover:opacity-40 transition-opacity duration-500" />
               <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-12 shadow-2xl">
-                <h2 className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-teal-600">
+                <h2 className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-linear-to-r from-orange-600 to-teal-600">
                   Experience Quality Across All Our Brands
                 </h2>
                 <p className="text-xl text-gray-700 leading-relaxed">
@@ -341,7 +235,7 @@ const BrandsPage: React.FC = () => {
           66% { transform: translate(-20px, 20px) scale(0.9); }
         }
         
-        @keyframes gradient {
+        @keyframes linear {
           0%, 100% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }
         }
@@ -363,9 +257,9 @@ const BrandsPage: React.FC = () => {
           animation-delay: 4s;
         }
         
-        .animate-gradient {
+        .animate-linear {
           background-size: 200% 200%;
-          animation: gradient 3s ease infinite;
+          animation: linear 3s ease infinite;
         }
         
         .animate-bounce-slow {
