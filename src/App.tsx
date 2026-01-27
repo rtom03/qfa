@@ -6,6 +6,9 @@ import Home from "./pages/Home";
 import { Route, Routes } from "react-router-dom";
 import About from "./pages/About";
 import BrandsPage from "./pages/BrandPage";
+import JoinUs from "./pages/JoinUs";
+import Esg from "./pages/Esg";
+import NewsPage from "./pages/NewsPage";
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -47,6 +50,9 @@ const App = () => {
         />
         <Route path="about-us" element={<About />} />
         <Route path="our-brands" element={<BrandsPage />} />
+        <Route path="join-us" element={<JoinUs />} />
+        <Route path="esg" element={<Esg />} />
+        <Route path="news" element={<NewsPage />} />
       </Routes>
 
       {/* Footer */}
