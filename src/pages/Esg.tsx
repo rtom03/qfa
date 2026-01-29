@@ -6,10 +6,8 @@ const Esg = () => {
   return (
     <div>
       <HeroContent
-        header="ESG"
-        content="QFA is a multi-brand dining and delivery company, operating a
-          portfolio of delicious food brands, including international icons and
-          our own home-grown favourites."
+        header="Environmental & Social Responsibility"
+        content="We are a multi-brand dining and delivery company"
       />
     </div>
   );
