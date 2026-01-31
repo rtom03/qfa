@@ -1,48 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import { Target, Award } from "lucide-react";
 import HeroContent from "../components/HeroContent";
 import { useDocumentTitle } from "../components/UseDocument";
-
-interface SectionProps {
-  children: React.ReactNode;
-  delay?: number;
-}
-
-const AnimatedSection: React.FC<SectionProps> = ({ children, delay = 0 }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-  useDocumentTitle("About");
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => setIsVisible(true), delay);
-        }
-      },
-      { threshold: 0.1 },
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, [delay]);
-
-  return (
-    <div
-      ref={ref}
-      className={`transition-all duration-1000 transform ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-      }`}
-    >
-      {children}
-    </div>
-  );
-};
+import AnimatedSection from "../components/AnimatedSection";
 
 const AboutUs: React.FC = () => {
+  useDocumentTitle("ABout");
   return (
     <div className="min-h-screen bg-linear-to-br from-slate-50 via-white to-purple-50">
       {/* Hero Section */}
@@ -52,7 +15,7 @@ const AboutUs: React.FC = () => {
       />
 
       {/* Main Description */}
-      <section className="py-20 px-6">
+      <section className="py-6 px-6">
         <AnimatedSection>
           <div className="max-w-6xl mx-auto">
             <div className="relative group">

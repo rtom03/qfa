@@ -1,55 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { ExternalLink } from "lucide-react";
 import HeroContent from "../components/HeroContent";
 import { brands } from "../constants";
 import { Link } from "react-router-dom";
 import { useDocumentTitle } from "../components/UseDocument";
-
-interface AnimatedSectionProps {
-  children: React.ReactNode;
-  delay?: number;
-}
-
-const AnimatedSection: React.FC<AnimatedSectionProps> = ({
-  children,
-  delay = 0,
-}) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => setIsVisible(true), delay);
-        }
-      },
-      { threshold: 0.1 },
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, [delay]);
-
-  return (
-    <div
-      ref={ref}
-      className={`transition-all duration-1000 transform ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-      }`}
-    >
-      {children}
-    </div>
-  );
-};
+import AnimatedSection from "../components/AnimatedSection";
 
 const BrandsPage: React.FC = () => {
+  useDocumentTitle("Brands");
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
   const [hoveredBrand, setHoveredBrand] = useState<string | null>(null);
-  useDocumentTitle("Brands");
 
   return (
     <div className="min-h-screen bg-linear-to-br from-slate-50 via-white to-blue-50">
@@ -62,7 +22,7 @@ const BrandsPage: React.FC = () => {
       />
 
       {/* Brands Grid Section */}
-      <section className="py-1.5 px-6">
+      <section className="py-6 px-6">
         <div className="max-w-7xl mx-auto">
           <AnimatedSection>
             <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-gray-900">
@@ -136,10 +96,10 @@ const BrandsPage: React.FC = () => {
                             to={brand.link}
                             className="flex items-center gap-2.5"
                           >
-                            <span className="text-sm font-semibold">
+                            <span className="text-sm font-semibold text-white">
                               Visit Website
                             </span>
-                            <ExternalLink className="w-4 h-4" />
+                            <ExternalLink className="w-4 h-4 text-white" />
                           </Link>
                         </div>
                       </div>
@@ -197,8 +157,8 @@ const BrandsPage: React.FC = () => {
                     rel="noopener noreferrer"
                     className={`inline-flex items-center gap-3 px-8 py-4 rounded-full bg-linear-to-r ${brand.linear} text-white font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105`}
                   >
-                    <span>Explore {brand.name}</span>
-                    <ExternalLink className="w-5 h-5" />
+                    <span className="text-white">Explore {brand.name}</span>
+                    <ExternalLink className="w-5 h-5 text-white" />
                   </Link>
                 </div>
               </div>
