@@ -19,3 +19,8 @@ export interface HeroTp {
   header: string;
   content: string;
 }
+
+export interface SectionProps {
+  children: React.ReactNode;
+  delay?: number;
+}

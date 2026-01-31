@@ -15,7 +15,7 @@ const HeroContent = ({ header, content }: HeroTp) => {
     window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
   };
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+    <section className="relative h-125 flex flex-col items-center justify-center overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
         <div

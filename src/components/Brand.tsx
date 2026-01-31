@@ -25,7 +25,7 @@ const Brand = () => {
 
               <div className="relative p-8 text-center">
                 <div className="text-8xl mb-6 transform group-hover:scale-125 group-hover:rotate-12 transition-all duration-500">
-                  {brand.logo}
+                  {brand.icon}
                 </div>
                 <h3 className="text-2xl font-bold mb-2">{brand.name}</h3>
                 <p className="text-gray-400 group-hover:text-white transition-colors mb-6">
