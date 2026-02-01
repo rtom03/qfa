@@ -1,5 +1,7 @@
+import type React from "react";
+
 export interface HmPropsTp {
-  statsRef: React.RefObject<HTMLElement> | null;
+  statsRef: React.RefObject<HTMLElement | null> | null;
   counters: { stores: number; brands: number; jobs: number };
 }
 

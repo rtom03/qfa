@@ -14,7 +14,7 @@ const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [counters, setCounters] = useState({ stores: 0, brands: 0, jobs: 0 });
-  const statsRef = useRef(null);
+  const statsRef = useRef<HTMLElement>(null);
   const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
